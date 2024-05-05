@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mintnado City</title>
+    <style>
+      body {
+        background: linear-gradient(to right, lightgreen, lightblue);
+        margin: 0;
+        overflow: hidden;
+        /* Prevent horizontal scrollbar */
+      }
+
+      .tornado {
+        width: 150px;
+        height: 150px;
+        background: transparent;
+        border-radius: 0;
+        position: absolute;
+        animation: moveHorizontal 5s infinite linear, spin 2s infinite linear;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes moveHorizontal {
+        0% {
+          left: 0;
+        }
+
+        100% {
+          left: calc(100vw - 150px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img src="https://ezgif.com/save/ezgif-7-e7dff15402.gif" alt="Bouncing Tornado" class="tornado">
+    <img src="https://ezgif.com/save/ezgif-7-e7dff15402.gif" alt="Bouncing Tornado" class="tornado">
+    <img src="https://ezgif.com/save/ezgif-7-e7dff15402.gif" alt="Bouncing Tornado" class="tornado">
+    <script>
+      const body = document.querySelector('body');
+      let numberOfTornadoes = 3; // Initial number of tornadoes
+      body.addEventListener('click', function(event) {
+        // Create a new image element for the tornado
+        const newTornado = new Image();
+        newTornado.src = "https://ezgif.com/save/ezgif-7-e7dff15402.gif";
+        newTornado.alt = "Bouncing Tornado";
+        newTornado.classList.add('tornado');
+        // Set random starting position within the viewport
+        const randomTop = Math.random() * (window.innerHeight - 150); // Account for tornado height
+        const randomLeft = Math.random() * (window.innerWidth - 150); // Account for tornado width
+        newTornado.style.top = randomTop + 'px';
+        newTornado.style.left = randomLeft + 'px';
+        // Add the new tornado to the body element
+        body.appendChild(newTornado);
+        numberOfTornadoes++;
+      });
+    </script>
+  </body>
+</html>
