@@ -1,62 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <body style="background-color:royalblue;">
+  <body style="background-color: royalblue;">
     <audio src="tornado-sound-better-quality-68141.mp3" autoplay loop></audio>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mintnado City</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-      body {
-        background: linear-gradient(to right, lightgreen, lightblue);
-        margin: 0;
-        overflow: hidden;
-        /* Prevent horizontal scrollbar */
-      }
-
-      .tornado {
-        width: 150px;
-        height: 150px;
-        background: transparent;
-        border-radius: 0;
-        position: absolute;
-        animation: moveHorizontal 5s infinite linear, spin 2s infinite linear;
-      }
-
-      @keyframes moveHorizontal {
-        0% {
-          left: 0;
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Mintnado City</title>
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+      <style>
+        body {
+          background: linear-gradient(to right, lightgreen, lightblue);
+          margin: 0;
+          overflow: hidden;
+          /* Prevent horizontal scrollbar */
         }
 
-        100% {
-          left: calc(100vw - 150px);
+        .tornado {
+          width: 150px;
+          height: 150px;
+          background: transparent;
+          border-radius: 0;
+          position: absolute;
+          animation: moveHorizontal 5s infinite linear, spin 2s infinite linear;
         }
-      }
-    </style>
-  </head>
-  <body>
-    <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
-    <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
-    <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
-    <script>
-      const body = document.querySelector('body');
-      let numberOfTornadoes = 3; // Initial number of tornadoes
-      body.addEventListener('click', function(event) {
-        // Create a new image element for the tornado
-        const newTornado = new Image();
-        newTornado.src = "tornado-joypixels-ezgif.com-effects.gif";
-        newTornado.alt = "Bouncing Tornado";
-        newTornado.classList.add('tornado');
-        // Set random starting position within the viewport
-        const randomTop = Math.random() * (window.innerHeight - 150); // Account for tornado height
-        const randomLeft = Math.random() * (window.innerWidth - 150); // Account for tornado width
-        newTornado.style.top = randomTop + 'px';
-        newTornado.style.left = randomLeft + 'px';
-        // Add the new tornado to the body element
-        body.appendChild(newTornado);
-        numberOfTornadoes++;
-      });
-    </script>
-  </body>
+
+        @keyframes moveHorizontal {
+          0% {
+            left: 0;
+          }
+
+          100% {
+            left: calc(100vw - 150px);
+          }
+        }
+
+        #counter {
+          padding: 10px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="counter" style="color: blue; background-color: green;">Number of Tornadoes: 3</div>
+      <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
+      <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
+      <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
+      <script>
+        const body = document.querySelector('body');
+        let numberOfTornadoes = 3; // Initial number of tornadoes
+        body.addEventListener('click', function(event) {
+          // Create a new image element for the tornado
+          const newTornado = new Image();
+          newTornado.src = "tornado-joypixels-ezgif.com-effects.gif";
+          newTornado.alt = "Bouncing Tornado";
+          newTornado.classList.add('tornado');
+          // Set random starting position within the viewport
+          const randomTop = Math.random() * (window.innerHeight - 150); // Account for tornado height
+          const randomLeft = Math.random() * (window.innerWidth - 150); // Account for tornado width
+          newTornado.style.top = randomTop + 'px';
+          newTornado.style.left = randomLeft + 'px';
+          // Add the new tornado to the body element
+          body.appendChild(newTornado);
+          numberOfTornadoes++;
+          document.getElementById('counter').textContent = 'Number of Tornadoes: ' + numberOfTornadoes;
+        });
+      </script>
+    </body>
 </html>
