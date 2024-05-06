@@ -44,21 +44,16 @@
       </style>
     </head>
     <body>
-      <div id="counter">Number of Tornadoes: <span id="score"></span> (Personal Best: <span id="personalBest"></span>) (Highest Tornado Count Ever: <span id="highestTornadoCount"></span>)</div>
-      <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
-      <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
+      <div id="counter">Number of Tornadoes: <span id="score"></span> (Personal Best: <span id="personalBest"></span>)
       <img src="tornado-joypixels-ezgif.com-effects.gif" alt="Bouncing Tornado" class="tornado">
       <script>
         const body = document.querySelector('body');
-        let numberOfTornadoes = 3; // Initial number of tornadoes
+        let numberOfTornadoes = 1; // Initial number of tornadoes
         let personalBest = parseInt(localStorage.getItem('personalBest')) || 0;
-        let highestTornadoCount = parseInt(localStorage.getItem('highestTornadoCount')) || 0;
         const scoreElement = document.getElementById('score');
         const personalBestElement = document.getElementById('personalBest');
-        const highestTornadoCountElement = document.getElementById('highestTornadoCount');
         scoreElement.textContent = numberOfTornadoes;
         personalBestElement.textContent = personalBest;
-        highestTornadoCountElement.textContent = highestTornadoCount;
 
         body.addEventListener('click', function(event) {
           // Create a new image element for the tornado
@@ -82,12 +77,6 @@
             personalBestElement.textContent = personalBest;
             localStorage.setItem('personalBest', personalBest);
           }
-
-          // Update the highest tornado count ever
-          if (numberOfTornadoes > highestTornadoCount) {
-            highestTornadoCount = numberOfTornadoes;
-            highestTornadoCountElement.textContent = highestTornadoCount;
-            localStorage.setItem('highestTornadoCount', highestTornadoCount);
           }
         });
       </script>
